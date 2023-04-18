@@ -70,7 +70,8 @@ export class AppComponent {
     
    let data =  this.heroes.filter(x => this.heroes.indexOf(x.id == this.objHeroes.heroes_id));
     console.log(data);
-    console.log('index',data)
+    console.log('index',data);
+    this.objHeroes.heroes_id = data[0].id;
   }
 
 }
