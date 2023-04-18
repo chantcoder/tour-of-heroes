@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="header bg-primary text-center p-2 text-white">
+    <h1>Tour of Heroes</h1>
+  </div>
+  <div class="container text-center border ">
+    <div class="btn-group m-2 p-auto" role="group" aria-label="Navigation">
+      <button class="btn btn-secondary" id="D" value="D" (click)="initSelection($event)">Dashboard</button>
+      <button class="btn btn-secondary" id="H" value="H" (click)="initSelection($event)">Heroes</button>
+    </div>
+  </div>
+  <div class="container" *ngIf="objHeroes.dashboard == 'D'">
+    <div class="row p-4">
+      <div class="btn-group">
+        <button *ngFor="let data of heroes;index as i" class="btn d-flex {{data.bg_Color}} {{data.common}} "
+          (click)="editClicked(data)">{{data.title}}</button>
+      </div>
+      <div class="row" *ngIf="editHeroes">
+        <div class="card w-25 my-4 m-auto shadow-lg">
+          <div class="card-body">
+            <div class="card-title ">
+              <h2><strong class="text-primary">{{selectedHero}} </strong> Details </h2>
+            </div>
+            <div class="card-text pb-2">
+              <div>
+                <label for="id">Hero Id</label>
+                <input type="text" class="form-control" id="id" [(ngModel)]="objHeroes.heroes_id" readonly>
+              </div>
+              <div>
+                <label for="hero_name">Hero Name</label>
+                <input type="text" class="form-control" id="hero_name" [(ngModel)]="objHeroes.hero_name" (change)="editHeroesEvent()" >
+              </div>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-dark text-white w-100 " (click)="heroesBackClicked()">Back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container text-center" *ngIf="objHeroes.dashboard == 'H'">
+    <div class="row p-4">
+      <div class="btn-group">
+
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
